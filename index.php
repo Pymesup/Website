@@ -38,9 +38,9 @@
           <div class="col-sm-8">         
             <div class="jumbotron border">
                 <h1 class="display-4">Monkapp te da la bienvenida!</h1>
-                <p class="lead">Este es el sitio web central de la compañia, en el se hace una gestión y una concentración de los proyectos.</p>
+                <p class="lead">Este es el sitio web central de la compañia, en él se hace una gestión y una concentración de los proyectos.</p>
                 <hr class="my-4">
-                <p>Nuestra historia es breve, un dia hace 6 meses, Lucas Vergara y Gonzalo Salazar se propusieron realizar un proyecto que se pueda materializar, y en el que ambos puedan aportar a su manera, ahí nació Monkapp, una idea que, a pesar de no contar con un objetivo claro, ya que comenzó como una aplicación movil y ahora pasó a ser una central de proyectos multiplataformas, significa mucho para sus dueños ya que en el se piensa plasmar toda la pasión por la programación y el aprendizaje.  En Abril y Marzo del 2020 se han realizado una serie de importantes avances que hacen que Monkapp signifique cada vez un mayor orgullo para sus Co-founders. </p>
+                <p>Nuestra historia es breve, un dia hace 6 meses, Lucas Vergara y Gonzalo Salazar se propusieron realizar un proyecto que se pueda materializar, y en el que ambos puedan aportar a su manera, ahí nació Monkapp, una idea que, a pesar de no contar con un objetivo claro, ya que comenzó como una aplicación movil y ahora pasó a ser una central de proyectos multiplataforma, significa mucho para sus dueños ya que en él se piensa plasmar toda la pasión por la programación y el aprendizaje.  En Abril y Marzo del 2020 se han realizado una serie de importantes avances que hacen que Monkapp signifique cada vez un mayor orgullo para sus Co-founders. </p>
                 <a class="btn btn-outline-dark btn-lg btn-sm" href="https://github.com/Fromiti/MonkappWEB" role="button">Visitanos en GitHub!</a>
             </div>             
           </div>          
