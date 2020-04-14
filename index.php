@@ -27,6 +27,7 @@
         background:blue;
       }
     </style>
+	  <title>Monkapp</title>
   </head>
   <body>
     <?php
