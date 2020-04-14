@@ -1,11 +1,12 @@
 <?php 
 
 session_start();
-include_once 'conexion_dbs/conexion.php';
 
-$id_user = $_POST['id'];
+include_once '../conexion_dbs/conexion.php';
 
-$res = mysql_query("SELECT id FROM usuarios WHERE nick='$id_user' ");
+$nombre = $_SESSION['nombre'];
+
+$res = mysql_query("SELECT id FROM usuarios WHERE nombre_apellido='$nombre' ");
 $result = mysql_fetch_array($res);
 
 $sql = 'UPDATE usuarios SET pymesup='1' WHERE id='$result' ';
