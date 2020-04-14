@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+#RewriteRule ExpresionRegular UrlDestino [banderas]
+
+RewriteRule ^([a-zA-Z0-9]*)$ datos.php?dato=$1
