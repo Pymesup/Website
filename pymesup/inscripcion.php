@@ -34,7 +34,46 @@
 		
     		<main>
     		    
-    			<h2>Servicio</h2>
+        <div class="container">
+	        <div class="card bg-light">
+	          <article class="card-body mx-auto" style="max-width: 400px;">
+	          <h4 class="card-title mt-3 text-center">Crea tu cuenta en MonkApp</h4>
+	          <p class="text-center">Únete...</p>
+	          <p class="divider-text">
+            </p>
+	        <form action="registro_temp" method="POST">
+	        <div class="form-group input-group">
+		        <div class="input-group-prepend">
+		          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		        </div>
+          <input name="nombre_apellido" class="form-control" placeholder="Nombre y Apellido" type="text" value = "<?php echo $_POST['nombre_apellido'];?>" required>
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+    	      <div class="input-group-prepend">
+		          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		        </div>
+              <input name="correo" class="form-control" placeholder="Email address" type="email" value = "<?php echo $_POST['correo'];?>" required>
+	        </div>
+	        <div class="form-group input-group">
+    	      <div class="input-group-prepend">
+		          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		        </div>
+            <input class="form-control" name="nombre_usuario" placeholder="Nombre de usuario" type="text"  minlenght="4" value = "<?php echo $_POST['nombre_usuario'];?>" required>
+          </div>
+        <div class="form-group input-group">
+    	    <div class="input-group-prepend">
+		        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		      </div>
+            <input name="contrasena" class="form-control" placeholder="Crear contraseña" type="password" required>
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+    	    <div class="input-group-prepend">
+		        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		      </div>
+            <input class="form-control" name="contrasena2" placeholder="Repetir contraseña" type="password" required>
+        </div> <!-- form-group// -->                                      
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Crear Cuenta  </button>
     
     
     		</main>
