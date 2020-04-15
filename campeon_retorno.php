@@ -207,6 +207,96 @@
             return "Diana";
         case 143:
             return "Zyra";
-    }
+        case 266:
+            return "Aatrox <3";
+        case 240:
+             return "Kled";
+        case 412:
+            return "Thresh";
+        case 875:
+            return "Sett";
+        case 164:
+            return "Camille";
+        case 523:
+            return "Aphelios";
+        case 268:
+            return "Azir";
+        case 420:
+            return "Illaoi";
+        case 202:
+             return "Jhin";
+        case 427:
+            return "Ivern";
+        case 429:
+            return "Kalista";
+        case 518:
+            return "Neeko";        
+        case 516:
+            return "Ornn";
+        case 246:
+            return "Qiyana";
+        case 421:
+            return "Rek'sai";
+        case 497:
+            return "Rakan";    
+        case 235:
+            return "Senna";
+        case 517:
+            return "Sylas";
+        case 223:
+            return "Tahm Kench";
+        case 163:
+            return "Taliyah";                       
+        case 161:
+            return "Vel'Koz";                    
+        case 254:
+            return "Vi";
+        case 157:
+            return "Yasuo";
+        case 350:
+            return "Yuumi"; 
+        case 154:
+            return "Zac";
+        case 142:
+            return "Zoe";
+        case 143:
+            return "Zyra";                   
+        case 141:
+            return "Kayn";
+        case 145:
+            return "Kai'Sa";
+        case 201:
+            return "Bardo";
+        case 145:
+            return "Braum";
+        case 555:
+            return "Pyke";
+        case 222:
+            return "Jinx";
+        case 134:
+            return "Syndra";
+        case 498:
+            return "Xayah";
+        case 203:
+            return "Kindred"; 
+        case 222:
+            return "Jinx";
+        case 245:
+            return "Ekko";
+        case 236:
+            return "Lucian";
+        case 267:
+            return "Nami";
+        case 133:
+            return "Quinn"; 
+        case 121:
+             return "Kha'zix";
+        case 150:
+            return "Gnar";
+        case 60:
+            return "Elise";
+        case 127:
+            return "Lissandra";          
+        }
 }
 ?>
