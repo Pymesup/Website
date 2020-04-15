@@ -297,6 +297,30 @@
             return "Elise";
         case 127:
             return "Lissandra";          
+        }       
+    }
+
+    function returnRangeTier($division){
+        strtolower($division);
+        switch($division){
+            case "iron":
+                return "1";
+            case "bronze":
+                return "2";
+            case "silver":
+                return "3";
+            case "gold":
+                return "4";    
+            case "platinum":
+                return "5"; 
+            case "diamond":
+                return "6";
+            case "master":
+                return "7";
+            case "grandmaster":
+                return "8";    
+            case "challenger":
+                return "9";   
         }
-}
+    }
 ?>
