@@ -74,7 +74,7 @@
         <div class="row">
           <div class="col-sm p-1">
             <div class="text-center">
-              <img src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon<?php echo $user['profileIconId']?>.jpg?image=q_auto&v=1518361200" height = "150" width = "150" >
+              <img src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon<?php echo $user['profileIconId']?>.jpg?image=q_auto&v=1518361200" height = "120" width = "120" >
               <img src="https://opgg-static.akamaized.net/images/borders2/<?php 
               $rango_soloq = strtolower($user_details_rank[$soloq]['tier']);
               $rango_flex = strtolower($user_details_rank[$flex]['tier']);
@@ -85,7 +85,7 @@
               }else{
                 echo $rango_flex;
               }
-              ?>.png" height = "170" width = "170">
+              ?>.png" height = "140" width = "140">
               <h4 class = "mt-2"> <?php echo $user['name']?></h4>
               <h4>Nivel: <?php echo $user['summonerLevel']?></h4>
             </div>          
@@ -93,11 +93,11 @@
           <div class="col-sm">
               <div class="text-center">
               <?php             
-                  if(isset($user_details_rank[$flex]['wins']) && isset($user_details_rank[$flex]['losses'])){
+                  if(isset($user_details_rank[$soloq]['wins']) && isset($user_details_rank[$soloq]['losses'])){
                   ?>
                     <h5>Ranked Soloq stats:</h5>
                     <h5>Victorias: <?php
-                    echo $user_details_rank[$soloq]['wins']; ?> Derrotas: <?php echo $user_details_rank[$flex]['losses']; ?> </h5>
+                    echo $user_details_rank[$soloq]['wins']; ?> Derrotas: <?php echo $user_details_rank[$soloq]['losses']; ?> </h5>
                     <h5>
                     <?php 
                     $suma = $user_details_rank[$soloq]['wins'] + $user_details_rank[$soloq]['losses'];
@@ -115,7 +115,7 @@
                     <h5><?php echo $user_details_rank[$soloq]['tier']." ". $user_details_rank[$soloq]['rank']; ?></h5>
                   <?php 
                   }else{ ?>
-                  <h5>Ranked Flexible 5v5 stats:</h5>
+                  <h5>Ranked Soloq stats:</h5>
                   <h5>Victorias: 0 Derrotas: 0 </h5> 
                     <h5> 0 % de victorias </h5>
                     <img src="
