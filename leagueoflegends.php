@@ -75,7 +75,17 @@
           <div class="col-sm p-1">
             <div class="text-center">
               <img src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon<?php echo $user['profileIconId']?>.jpg?image=q_auto&v=1518361200" height = "150" width = "150" >
-              <img src="https://opgg-static.akamaized.net/images/borders2/platinum.png" height = "170" width = "170">
+              <img src="https://opgg-static.akamaized.net/images/borders2/<?php 
+              $rango_soloq = strtolower($user_details_rank[$soloq]['tier']);
+              $rango_flex = strtolower($user_details_rank[$flex]['tier']);
+              $rango_soloq_tier = returnRangeTier($rango_soloq);
+              $rango_flex_tier = returnRangeTier($rango_flex);
+              if($rango_soloq_tier > $rango_flex_tier){
+                echo $rango_soloq;
+              }else{
+                echo $rango_flex;
+              }
+              ?>.png" height = "170" width = "170">
               <h4 class = "mt-2"> <?php echo $user['name']?></h4>
               <h4>Nivel: <?php echo $user['summonerLevel']?></h4>
             </div>          
@@ -156,7 +166,6 @@
             </div>           
           </div>
         </div>
-        <?php } ?> 
         <div class="container">
           <div class="row">
             <div class="col-4 p-2 border">
@@ -314,7 +323,8 @@
               ?>
             </div>
           </row>       
-        </div>       
+        </div>
+        <?php } ?>        
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script> 
