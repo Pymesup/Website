@@ -25,6 +25,11 @@
       .background2{
         background:blue;
       }
+      .borde_liga { 
+        padding:20;
+        border-image: url(https://opgg-static.akamaized.net/images/borders2/platinum.png);
+      }
+    
     </style>
   </head>
   <body>
@@ -50,10 +55,12 @@
     <hr>
     <?php 
       if(isset($_GET['nick'])){
+      $_GET['nick'] = str_replace(' ','%20', $_GET['nick']);
+      
       //API KEYS    
-      $user = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/".$_GET['nick']."?api_key=RGAPI-cdc8f095-4bec-4b96-8641-f69d8c3208a2"), true);
-      $user_details_rank = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/".$user['id']."?api_key=RGAPI-cdc8f095-4bec-4b96-8641-f69d8c3208a2"), true);
-      $user_details_masteries = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/".$user['id']."?api_key=RGAPI-cdc8f095-4bec-4b96-8641-f69d8c3208a2"), true);
+      $user = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/".$_GET['nick']."?api_key=RGAPI-60af67e2-b586-438f-b497-ad2c50555bcc"), true);
+      $user_details_rank = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/".$user['id']."?api_key=RGAPI-60af67e2-b586-438f-b497-ad2c50555bcc"), true);
+      $user_details_masteries = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/".$user['id']."?api_key=RGAPI-60af67e2-b586-438f-b497-ad2c50555bcc"), true);
 
       if($user_details_rank[0]['queueType'] == "RANKED_SOLO_5x5"){
         $soloq = 0;
@@ -67,68 +74,108 @@
         <div class="row">
           <div class="col-sm p-1">
             <div class="text-center">
-              <img src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon<?php echo $user['profileIconId']?>.jpg?image=q_auto&v=1518361200" class="rounded" height = "200" width = "200">
+              <img src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon<?php echo $user['profileIconId']?>.jpg?image=q_auto&v=1518361200" height = "120" width = "120" >
+              <img src="https://opgg-static.akamaized.net/images/borders2/<?php 
+              $rango_soloq = strtolower($user_details_rank[$soloq]['tier']);
+              $rango_flex = strtolower($user_details_rank[$flex]['tier']);
+              $rango_soloq_tier = returnRangeTier($rango_soloq);
+              $rango_flex_tier = returnRangeTier($rango_flex);
+              if($rango_soloq_tier > $rango_flex_tier){
+                echo $rango_soloq;
+              }else{
+                echo $rango_flex;
+              }
+              ?>.png" height = "140" width = "140">
               <h4 class = "mt-2"> <?php echo $user['name']?></h4>
               <h4>Nivel: <?php echo $user['summonerLevel']?></h4>
             </div>          
             </div>
           <div class="col-sm">
               <div class="text-center">
-                <h5>Ranked solo/duo stats:</h5>
-                <h5>Victorias: <?php echo $user_details_rank[$soloq]['wins']; ?> Derrotas: <?php echo $user_details_rank[$soloq]['losses']; ?> </h5>
-                <h5>
-                <?php 
-                $suma = $user_details_rank[$soloq]['wins'] + $user_details_rank[$soloq]['losses'];
-                $porcentaje = (100 / $suma) * $user_details_rank[$soloq]['wins'];
-                echo round($porcentaje);  
-                ?>
-                % de victorias
-                </h5>
-                <img src="
-                <?php 
-                $rango = strtolower($user_details_rank[$soloq]['tier']);
-                echo "https://opgg-static.akamaized.net/images/medals/".$rango."_1.png?image=q_auto&v=$flex";
-                ?>
-                " class="img-fluid" alt="Responsive image" height = "200" width = "200">               
-                <h5><?php echo $user_details_rank[$soloq]['tier']." ". $user_details_rank[$soloq]['rank']; ?></h5>
+              <?php             
+                  if(isset($user_details_rank[$soloq]['wins']) && isset($user_details_rank[$soloq]['losses'])){
+                  ?>
+                    <h5>Ranked Soloq stats:</h5>
+                    <h5>Victorias: <?php
+                    echo $user_details_rank[$soloq]['wins']; ?> Derrotas: <?php echo $user_details_rank[$soloq]['losses']; ?> </h5>
+                    <h5>
+                    <?php 
+                    $suma = $user_details_rank[$soloq]['wins'] + $user_details_rank[$soloq]['losses'];
+                    $porcentaje = (100 / $suma) * $user_details_rank[$soloq]['wins'];
+                    echo round($porcentaje);  
+                    ?>
+                    % de victorias
+                    </h5>
+                    <img src="
+                    <?php 
+                    $rango = strtolower($user_details_rank[$soloq]['tier']);
+                    echo "https://opgg-static.akamaized.net/images/medals/".$rango."_1.png?image=q_auto&v=$flex";
+                    ?>
+                    " class="img-fluid" alt="Responsive image" height = "200" width ="200">                
+                    <h5><?php echo $user_details_rank[$soloq]['tier']." ". $user_details_rank[$soloq]['rank']; ?></h5>
+                  <?php 
+                  }else{ ?>
+                  <h5>Ranked Soloq stats:</h5>
+                  <h5>Victorias: 0 Derrotas: 0 </h5> 
+                    <h5> 0 % de victorias </h5>
+                    <img src="
+                    <?php 
+                    echo "https://opgg-static.akamaized.net/images/medals/default.png";
+                    ?>
+                    " class="img-fluid" alt="Responsive image" height = "200" width ="200">                
+                    <h5> UNRANKED </h5>
+                  <?php } ?>
               </div>
           </div>
             <div class="col-sm">
-              <div class="text-center">
+              <div class="text-center"> 
+                  <?php             
+                  if(isset($user_details_rank[$flex]['wins']) && isset($user_details_rank[$flex]['losses'])){
+                  ?>
+                    <h5>Ranked Flexible 5v5 stats:</h5>
+                    <h5>Victorias: <?php
+                    echo $user_details_rank[$flex]['wins']; ?> Derrotas: <?php echo $user_details_rank[$flex]['losses']; ?> </h5>
+                    <h5>
+                    <?php 
+                    $suma = $user_details_rank[$flex]['wins'] + $user_details_rank[$flex]['losses'];
+                    $porcentaje = (100 / $suma) * $user_details_rank[$flex]['wins'];
+                    echo round($porcentaje);  
+                    ?>
+                    % de victorias
+                    </h5>
+                    <img src="
+                    <?php 
+                    $rango = strtolower($user_details_rank[$flex]['tier']);
+                    echo "https://opgg-static.akamaized.net/images/medals/".$rango."_1.png?image=q_auto&v=$flex";
+                    ?>
+                    " class="img-fluid" alt="Responsive image" height = "200" width ="200">                
+                    <h5><?php echo $user_details_rank[$flex]['tier']." ". $user_details_rank[$flex]['rank']; ?></h5>
+                  <?php 
+                  }else{ ?>
                   <h5>Ranked Flexible 5v5 stats:</h5>
-                  <h5>Victorias: <?php echo $user_details_rank[$flex]['wins']; ?> Derrotas: <?php echo $user_details_rank[$flex]['losses']; ?> </h5>
-                  <h5>
-                  <?php 
-                  $suma = $user_details_rank[$flex]['wins'] + $user_details_rank[$flex]['losses'];
-                  $porcentaje = (100 / $suma) * $user_details_rank[$flex]['wins'];
-                  echo round($porcentaje);  
-                  ?>
-                  % de victorias
-                  </h5>
-                  <img src="
-                  <?php 
-                  $rango = strtolower($user_details_rank[$flex]['tier']);
-                  echo "https://opgg-static.akamaized.net/images/medals/".$rango."_1.png?image=q_auto&v=$flex";
-                  ?>
-                  " class="img-fluid" alt="Responsive image" height = "200" width ="200">                
-                  <h5><?php echo $user_details_rank[$flex]['tier']." ". $user_details_rank[$flex]['rank']; ?></h5>                
+                  <h5>Victorias: 0 Derrotas: 0 </h5> 
+                    <h5> 0 % de victorias </h5>
+                    <img src="
+                    <?php 
+                    echo "https://opgg-static.akamaized.net/images/medals/default.png";
+                    ?>
+                    " class="img-fluid" alt="Responsive image" height = "200" width ="200">                
+                    <h5> UNRANKED </h5>
+                  <?php } ?>                                                
               </div>          
-            </div>
-            <?php
-            }
-            ?>
+            </div>           
           </div>
-        </div> 
+        </div>
         <div class="container">
           <div class="row">
             <div class="col-4 p-2 border">
               <div class="text-center mt-2">
-                <h4>Campeones más Utilizados</h4>
+                <h4>Campeones más Utilizados XD</h4>
               </div>
               <hr>               
                     <?php 
                     $id_encrypted = $user['accountId'];
-                    $matches = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/match/v4/matchlists/by-account/".$id_encrypted."?queue=420&season=13&beginTime=1578625200000&api_key=RGAPI-cdc8f095-4bec-4b96-8641-f69d8c3208a2"), true); // soloq desde 10 de enero              
+                    $matches = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/match/v4/matchlists/by-account/".$id_encrypted."?queue=420&season=13&beginTime=1578625200000&api_key=RGAPI-60af67e2-b586-438f-b497-ad2c50555bcc"), true); // soloq desde 10 de enero              
                     for($i = 0; $i < $matches['endIndex']; $i++){                   
                       $datos_partidas[$matches['matches'][$i]['champion']]++;
                     }
@@ -153,7 +200,7 @@
               <?php                
               for($i = 0; $i < 2; $i++){
                   $id_partida = $matches['matches'][$i]['gameId'];
-                  $partida = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/match/v4/matches/".$id_partida."?api_key=RGAPI-cdc8f095-4bec-4b96-8641-f69d8c3208a2"), true);
+                  $partida = json_decode(file_get_contents("https://la2.api.riotgames.com/lol/match/v4/matches/".$id_partida."?api_key=RGAPI-60af67e2-b586-438f-b497-ad2c50555bcc"), true);
               ?>
               <div class="row border p-1 mb-2">                       
                 <div class="col p-2">
@@ -276,18 +323,8 @@
               ?>
             </div>
           </row>       
-        </div> 
-        <div class="container" style="margin-top: 25px;padding: 10px">
-          <table id="tablax" class="table table-striped table-bordered" style="width:100%"> 
-            <tbody>
-              <tr>
-                  <td>1</td>
-                  <td>Leonardo</td>
-                  <td>Ape1</td>                 
-              </tr>
-            </tbody>
-          </table>
         </div>
+        <?php } ?>        
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script> 
