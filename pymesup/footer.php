@@ -1,5 +1,5 @@
 <footer>
 
-    <h3>Monkapp Company &copy 2020</h3>
+    <h3>Monkapp Company &copy date("Y")</h3>
     
 </footer>
