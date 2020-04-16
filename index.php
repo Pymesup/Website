@@ -63,10 +63,6 @@
               </div>             
           </div>                                       
       </div>
-      <hr>
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qdp-Gg7e2vc?rel=0" allowfullscreen></iframe>
-      </div>
     </div> 
     
     <!-- DECKS DE CEO Y MONKAPP -->
