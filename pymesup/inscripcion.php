@@ -21,7 +21,7 @@
       <?php include_once("../navbar.php");
       echo navBar(1);?>
       
-  	<header><h1>Pymesup </h1></header>
+  	<?php include_once("header.php");?>
 
 	  <nav>
 			<ul id="menu">
