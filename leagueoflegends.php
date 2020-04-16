@@ -29,6 +29,17 @@
         padding:20;
         border-image: url(https://opgg-static.akamaized.net/images/borders2/platinum.png);
       }
+      .marquito {
+        position: absolute;
+        z-index: 1;
+        top: -10px;
+        left: 110px;
+          
+      }
+      .iconowo{
+        position: relative;
+        z-index: -1;
+      }
     
     </style>
   </head>
@@ -74,18 +85,20 @@
         <div class="row">
           <div class="col-sm p-1">
             <div class="text-center">
-              <img src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon<?php echo $user['profileIconId']?>.jpg?image=q_auto&v=1518361200" height = "120" width = "120" >
-              <img src="https://opgg-static.akamaized.net/images/borders2/<?php 
-              $rango_soloq = strtolower($user_details_rank[$soloq]['tier']);
-              $rango_flex = strtolower($user_details_rank[$flex]['tier']);
-              $rango_soloq_tier = returnRangeTier($rango_soloq);
-              $rango_flex_tier = returnRangeTier($rango_flex);
-              if($rango_soloq_tier > $rango_flex_tier){
-                echo $rango_soloq;
-              }else{
-                echo $rango_flex;
-              }
-              ?>.png" height = "140" width = "140">
+				<div style="position: relative; left: 0; top: 0;" >
+				  <img src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon<?php echo $user['profileIconId']?>.jpg?image=q_auto&v=1518361200" height = "120" width = "120" class="iconowo" >
+				  <img src="https://opgg-static.akamaized.net/images/borders2/<?php 
+				  $rango_soloq = strtolower($user_details_rank[$soloq]['tier']);
+				  $rango_flex = strtolower($user_details_rank[$flex]['tier']);
+				  $rango_soloq_tier = returnRangeTier($rango_soloq);
+				  $rango_flex_tier = returnRangeTier($rango_flex);
+				  if($rango_soloq_tier > $rango_flex_tier){
+					echo $rango_soloq;
+				  }else{
+					echo $rango_flex;
+				  }
+				  ?>.png" height = "140" width = "140" class="marquito">
+				</div>
               <h4 class = "mt-2"> <?php echo $user['name']?></h4>
               <h4>Nivel: <?php echo $user['summonerLevel']?></h4>
             </div>          
